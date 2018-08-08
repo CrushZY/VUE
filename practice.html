@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            height: 30px;
+            width: 200px;
+            list-style: none;
+            margin-top: 20px;
+        }
+        .red{
+            background: #f00;
+        }
+        #price{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="product">
+        <ul id="list">
+            <li v-for="(product) in productList" @click="toogle(product)" v-bind:class="{red:isRed}">
+                <input type="checkbox">
+                <span>{{product.name}}</span>
+                <span id="price">{{product.price}}</span>
+            </li>
+        </ul>
+        <button>删除选中</button>
+        <span>总价：</span>
+    </div>
+<script src="vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:'#product',
+        data:{
+            productList :[
+                {
+                    name:'商品1',
+                    price:1111,
+                    show:true
+                },
+                {
+                    name:'商品2',
+                    price:2222,
+                    show:true
+                },
+                {
+                    name:'商品3',
+                    price:3333,
+                    show:true
+                },
+                {
+                    name:'商品4',
+                    price :4444,
+                    show:true
+                },
+                {
+                    name:'商品5',
+                    price:5555,
+                    show:true    
+                }
+            ],
+            clsName:'red',
+            isRed:'',
+            show:'false',
+        },
+        methods:{
+            toogle(product){
+                this.isRed=!this.isRed;
+                product.show=!product.show;
+                
+            },
+        },
+        
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>

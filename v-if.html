@@ -7,11 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <div v-if=isLogin>
+    <div id="app">
+        {{msg}}
+        <div v-if="isLogin">
+            用户名：张玉
+        </div>
+        <div v-else>
+            <a href="">请登录</a>
+        </div>
+        <div v-if="str=='A'">A</div>
+        <div v-else-if="str=='B'">B</div>
+        <div v-else-if="str=='C'">C</div>
+        <div v-else-if="str=='D'">D</div>
+        <div v-else>E</div>
 
+        <div v-show="isLogin">
+            show
+        </div>
     </div>
-    <div v-else>
 
-    </div>
+
+
+
+
+
+
+    <script src="vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                msg:'Hello World',
+                isLogin:true,
+                str:'A'
+            }
+        })
+    
+    
+    
+    
+    
+    
+    
+    </script>
 </body>
 </html>
