@@ -32,7 +32,7 @@
             </li>
         </ul>
         <button>删除选中</button>
-        <span>总价：0元</span>
+        <span>总价：{{total}}元</span>
     </div>
 <script src="vue.js"></script>
 <script>
@@ -66,14 +66,24 @@
                     isRed:false,
                 }
             ],
-            // clsName:'red',
-            // isRed:false,
+            price:0,
         },
         methods:{
             toggle(product){
                 product.isRed=!product.isRed;   
             },
         },
+        computed:{
+            total(){
+                let sum=0;
+                let arr=this.productList.forEach(elem=>{
+                    if(elem.isRed){
+                        sum+=elem.price;
+                    }
+                });
+                return sum;
+            }
+        }
         
 
 
