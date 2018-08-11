@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #drag{
+            width: 200px;
+            height: 200px;
+            background-color: #ff0036;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="app">
+        <div v-zhangyu='bg1'>张玉</div>
+    </div> -->
+    <div id="drag" v-drag>我会动</div>
+
+    <script src="vue.js"></script>
+    <script>
+    // Vue.directive('zhangyu',(el,binding,vNode)=>{
+    //     el.style.background=binding.value;
+    // });
+
+
+
+    Vue.directive('drag',(el,binding,vNode)=>{
+        el.style.position='absolute';
+        el.onmousedown=function(e){
+            let xDis=e.clientX-el.offsetLeft;
+            let yDis=e.clientY-el.offsetTop;
+            document.onmousemove=function(e){
+                el.style.left=e.clientX-xDis+'px';
+                el.style.top=e.clientY-yDis+'px';
+            };
+            el.onmouseup=function(){
+                document.onmousemove=null;
+            };
+        };
+    });
+    new Vue({
+        el:'#drag',
+        date:{
+
+        }
+    })
+    </script>
+</body>
+</html>
